@@ -1,0 +1,7 @@
+1.解压输入包，读取migration_plan.csv、field_map.csv、两份legacy_values和change_request.txt。
+2.对照field_map.csv重写两个环境的values，使每个旧字段进入目标路径。
+3.调整Chart的values.yaml和values.schema.json，定义image、replicaCount、service与gateway入口。
+4.更新Deployment、Service和ConfigMap模板，让镜像、副本、端口与网关运行值由新values提供。
+5.运行helm lint检查Chart，再按migration_plan.csv中的发布名、命名空间和values执行helm template。
+6.解析两份候选清单，核对对象身份、Service选择器、端口、ConfigMap字段和维护提示。
+7.整理field_migration.csv、release_review.csv与release_note.md，保留供版本负责人追查的材料路径。

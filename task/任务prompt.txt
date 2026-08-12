@@ -1,0 +1,7 @@
+版本组要让边缘网关的preview和production共用一套Chart。旧值仍围绕gateway分组，starter也只认识旧结构，两套Chart分开维护容易让配置走散。
+
+migration_plan.csv列出环境、发布名和命名空间，field_map.csv记录旧字段的新位置。legacy_values保留现用值，change_request.txt说明合并范围，starter是待接手的Chart。
+
+把两份旧值分别整理成新values，镜像标签、副本数、端口和网关运行值落到对应入口。Chart需要约束这些入口，并由Deployment、Service和ConfigMap使用。维护提示原有的分行继续保留。
+
+用Helm检查Chart并生成两份候选清单。Chart、新values和清单放在output，field_migration.csv供版本负责人回查字段去向，release_review.csv记录消费位置。release_note.md写明合并范围，现场安装和流量观察由窗口值班接手。

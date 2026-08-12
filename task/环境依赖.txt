@@ -1,0 +1,7 @@
+操作系统： Windows11。
+
+主软件为Helm3.18.4，使用Windows原生helm.exe检查Chart并渲染preview和production候选清单。PowerShell7负责命令调用，Python3.12与PyYAML6.0.2负责整理CSV、YAML和Markdown。
+
+安装工具时可以联网。操作者需要输入读取权限和output写入权限。CPU和内存需满足两组Chart渲染和结构化文件解析，GPU不参与；磁盘需容纳旧值、新values、候选清单与报告。Helm和Python入口设置有限超时，任一环境处理失败或超时后停止生成合并包。
+
+主要风险是环境值串用、旧字段漏迁、Service端口与Deployment端口不一致，或维护提示的换行在模板中丢失。

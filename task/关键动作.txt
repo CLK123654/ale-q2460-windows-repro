@@ -1,0 +1,5 @@
+核对环境计划、字段映射和两份旧值，确认每个旧字段都有明确消费者。
+把旧gateway层级拆到image、replicaCount、service和gateway四个新入口，分别形成preview与production values。
+调整Chart默认值、schema和模板，使Deployment、Service与ConfigMap使用迁移后的字段。
+运行Helm检查并渲染两个环境，核对对象关系、字段值和维护提示换行。
+整理字段迁移记录、发布审查记录和合并说明，交给版本负责人安排窗口。
